@@ -1,17 +1,19 @@
 import React from 'react';
 import * as Chakra from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { logout } from '../actions/userActions';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userCred } = userLogin;
 
   const _logoutHandler = () => {
     dispatch(logout());
+    history.push('/login');
   };
   return (
     <Chakra.Box bgColor="gray.800" height="10vh">

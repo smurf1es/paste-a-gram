@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import * as Chakra from '@chakra-ui/react';
 import { listPosts, deletePost } from '../actions/postActions';
 import { POST_CREATE_RESET } from '../constants/postConstants';
 import PostForm from '../components/PostForm';
 import PostItem from '../components/PostItem';
 
-const PostScreen = ({ history }) => {
+const PostScreen = () => {
   const [close, setClose] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userCred, loading: loadingCred } = userLogin;

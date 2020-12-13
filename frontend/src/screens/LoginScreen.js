@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   Alert,
   AlertDescription,
@@ -10,8 +11,9 @@ import {
 } from '@chakra-ui/react';
 import LoginForm from '../components/LoginForm';
 
-const LoginScreen = ({ location, history, isSubmitting }) => {
+const LoginScreen = () => {
   const [close, setClose] = useState(false);
+  const history = useHistory();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: loadingLogin, error: errorLogin, userCred } = userLogin;
 
@@ -39,8 +41,7 @@ const LoginScreen = ({ location, history, isSubmitting }) => {
           />
         </Alert>
       )}
-      {loadingLogin && <Spinner />}
-      <LoginForm />
+      <LoginForm loadingLogin={loadingLogin} />
     </Box>
   );
 };

@@ -64,7 +64,7 @@ const LoginForm = () => {
             <Chakra.Button
               mt={4}
               colorScheme="teal"
-              isLoading={props.isSubmitting}
+              isLoading={props.loadingLogin}
               type="submit"
             >
               Login
